@@ -148,7 +148,7 @@ def generate_salary_pdf(request, employee_id):
     basic_salary = salary.basic_salary
     gross_salary = basic_salary
 
-    # Calculate gross salary based on deductions
+
     for component in stay_components:
         if component.is_deduction:
             gross_salary -= component.amount
