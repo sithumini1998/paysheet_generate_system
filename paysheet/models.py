@@ -25,7 +25,7 @@ class Salary(models.Model):
         return f"Salary details for {self.employee.name}"
 
 class StayComponent(models.Model):
-    component_id=models.CharField(max_length=20, unique=True,default="")
+
     salary_detail=models.ForeignKey(Salary, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     date = models.DateField()

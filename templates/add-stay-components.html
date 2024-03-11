@@ -14,10 +14,7 @@
         <h1 class="mb-4">Add Stay Component</h1>
         <form method="post" action="{% url 'add-cmp' %}">
             {% csrf_token %}
-            <div class="mb-3">
-                <label for="component_id" class="form-label">Component ID:</label>
-                <input type="text" id="component_id" name="component_id" class="form-control">
-            </div>
+
             <div class="mb-3">
                 <label for="salary_detail" class="form-label">Salary Detail:</label>
                 <select name="salary_detail" id="salary_detail" class="form-select">

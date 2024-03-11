@@ -11,7 +11,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Employee Management</a>
+        <a class="navbar-brand" href="#">payroll managment system</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -86,7 +86,7 @@
                 <td>{{ salary_entry.position }}</td>
                 {% endfor %}
                 <td>
-                    <button onclick="redirectToPDF('{{ employee.id }}')" class="btn btn-info">Download Paysheet</button>
+                    <a href="{% url 'generate_salary_pdf' employee.employee_id %}" class="btn btn-success btn-sm">Generate Salary PDF</a>
                     <button onclick="downloadExcel('{{ employee.id }}')" class="btn btn-success">Download Excel</button>
                 </td>
             </tr>
