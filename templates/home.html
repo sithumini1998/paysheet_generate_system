@@ -4,24 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Search</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<a href="add-employee"><button>Add Employee</button></a>
-<h1>search  employee</h1>
-<form method="GET">
-    <label for="employee_id">Employee ID:</label>
-    <input type="text" id="employee_id" name="employee_id"><br><br>
-    <label for="employee_name">Employee Name:</label>
-    <input type="text" id="employee_name" name="employee_name"><br><br>
-    <label for="month">Month:</label>
-    <input type="month" id="month" name="month"><br><br>
-    <button type="submit">Search</button>
-</form>
-<br>
 
-{% if employees %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Employee Management</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="employeeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Employee
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="employeeDropdown">
+                        <li><a class="dropdown-item" href="add-employee">Add Employee</a></li>
+                        <li><a class="dropdown-item" href="view-employee">View Employee</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="salaryDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Salary
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="salaryDropdown">
+                        <li><a class="dropdown-item" href="add-salary">Add Salary</a></li>
+                        <li><a class="dropdown-item" href="view-salary-details">View Salary</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="componentDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Component
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="componentDropdown">
+                        <li><a class="dropdown-item" href="add-component">Add Component</a></li>
+                        <li><a class="dropdown-item" href="view-component">View Component</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <h1>Search Employee</h1>
+    <form method="GET">
+        <label for="employee_id" class="form-label">Employee ID:</label>
+        <input type="text" id="employee_id" name="employee_id" class="form-control"><br>
+        <label for="employee_name" class="form-label">Employee Name:</label>
+        <input type="text" id="employee_name" name="employee_name" class="form-control"><br>
+        <label for="month" class="form-label">Month:</label>
+        <input type="month" id="month" name="month" class="form-control"><br>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+    <br>
+
+    <!-- Search Results Table -->
+    {% if employees %}
     <h2>Search Results</h2>
-    <table border="1">
+    <table class="table table-bordered">
         <thead>
             <tr>
                 <th>Employee ID</th>
@@ -29,7 +74,6 @@
                 <th>Join Date</th>
                 <th>Position</th>
                 <th>Action</th>
-                <!-- Add other fields as needed -->
             </tr>
         </thead>
         <tbody>
@@ -42,27 +86,23 @@
                 <td>{{ salary_entry.position }}</td>
                 {% endfor %}
                 <td>
-                    <button onclick="downloadPaysheet('{{ employee.employee_id }}')">Download Paysheet</button>
-                    <button onclick="downloadExcel('{{ employee.employee_id }}')">Download Excel</button>
+                    <button onclick="downloadPaysheet('{{ employee.employee_id }}')" class="btn btn-info">Download Paysheet</button>
+                    <button onclick="downloadExcel('{{ employee.employee_id }}')" class="btn btn-success">Download Excel</button>
                 </td>
-                <!-- Add other fields as needed -->
             </tr>
             {% endfor %}
         </tbody>
     </table>
-{% endif %}
+    {% endif %}
+</div>
+
+<!-- Bootstrap JS (optional) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
 <script>
-
-
     function downloadExcel(employeeId) {
-        // Here you can implement logic to download the data as an Excel file for a specific employee
-        // For example, you can create a Blob object containing the table data for the given employee and force a download
         alert("Downloading Excel for Employee ID: " + employeeId);
     }
-
-
-
-
 </script>
 </body>
 </html>
