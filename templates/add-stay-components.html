@@ -15,7 +15,7 @@
         <label for="salary_detail">Salary Detail:</label>
         <select name="salary_detail" id="salary_detail">
             {% for salary_detail in salaries %}
-                <option value="{{ salary_detail.id }}">{{ salary_detail.salary_id }}</option>
+                <option value="{{ salary_detail.id }}">{{ salary_detail.employee.employee_id  }}</option>
             {% endfor %}
         </select><br><br>
         <label for="name">Name:</label>
