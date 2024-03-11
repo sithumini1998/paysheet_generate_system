@@ -1,0 +1,40 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee List</title>
+</head>
+<body>
+    <h1>Employee List</h1>
+    <table border="1">
+        <tr>
+            <th> ID</th>
+            <th>Salary Id</th>
+            <th>Employee Name</th>
+            <th>Basic Salary</th>
+            <th>Join Date</th>
+            <th>Position</th>
+            <th>Action</th>
+
+        </tr>
+        {% for data in form %}
+        <tr>
+            <td>{{data.id}}</td>
+            <td>{{data.salary_id}}</td>
+            <td>{{data.employee.name }}</td>
+            <td>{{data.basic_salary}}</td>
+            <td>{{data.join_date}}</td>
+            <td>{{data.position}}</td>
+            <td>
+                <a href="{% url 'edit-salary' data.id %}" >Edit</a>
+                <a href="{% url 'delete-salary' data.id %}" >Delete</a>
+            </td>
+
+
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

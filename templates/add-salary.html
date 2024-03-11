@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Salary Data</title>
+</head>
+<body>
+    <h1>Add Salary Data</h1>
+    <form method="post" action="{% url 'add-slry' %}">
+        {% csrf_token %}
+        <label for="salary_id">salary ID:</label>
+        <input type="text" id="salary_id" name="salary_id" ><br>
+        <label for="employee">Employee:</label>
+        <select name="employee" id="employee">
+            {% for employee in employees %}
+                <option value="{{ employee.id }}">{{ employee.name }}</option>
+            {% endfor %}
+        </select><br><br>
+        <label for="basic_salary">Basic Salary:</label>
+        <input type="text" id="basic_salary" name="basic_salary"><br><br>
+        <label for="join_date">Join Date:</label>
+        <input type="date" id="join_date" name="join_date"><br><br>
+        <label for="position">Position:</label>
+        <input type="text" id="position" name="position"><br><br>
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!-- add_stay_component.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Stay Component</title>
+</head>
+<body>
+    <h1>Add Stay Component</h1>
+    <form method="post" action="{% url 'add-cmp' %}">
+        {% csrf_token %}
+        <label for="component_id">Component ID:</label>
+        <input type="text" id="component_id" name="component_id"><br><br>
+        <label for="salary_detail">Salary Detail:</label>
+        <select name="salary_detail" id="salary_detail">
+            {% for salary_detail in salaries %}
+                <option value="{{ salary_detail.id }}">{{ salary_detail.salary_id }}</option>
+            {% endfor %}
+        </select><br><br>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date"><br><br>
+        <label for="is_deduction">Is Deduction:</label>
+        <input type="checkbox" id="is_deduction" name="is_deduction"><br><br>
+        <label for="amount">Amount:</label>
+        <input type="text" id="amount" name="amount"><br><br>
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>

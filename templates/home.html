@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Search</title>
+</head>
+<body>
+<a href="add-employee"><button>Add Employee</button></a>
+<h1>search  employee</h1>
+<form method="GET">
+    <label for="employee_id">Employee ID:</label>
+    <input type="text" id="employee_id" name="employee_id"><br><br>
+    <label for="employee_name">Employee Name:</label>
+    <input type="text" id="employee_name" name="employee_name"><br><br>
+    <label for="month">Month:</label>
+    <input type="month" id="month" name="month"><br><br>
+    <button type="submit">Search</button>
+</form>
+<br>
+
+{% if employees %}
+    <h2>Search Results</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Employee ID</th>
+                <th>Name</th>
+                <th>Join Date</th>
+                <th>Position</th>
+                <th>Action</th>
+                <!-- Add other fields as needed -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for employee in employees %}
+            <tr>
+                <td>{{ employee.employee_id }}</td>
+                <td>{{ employee.name }}</td>
+                {% for salary_entry in employee.salary_set.all %}
+                <td>{{ salary_entry.join_date }}</td>
+                <td>{{ salary_entry.position }}</td>
+                {% endfor %}
+                <td>
+                    <button onclick="downloadPaysheet('{{ employee.employee_id }}')">Download Paysheet</button>
+                    <button onclick="downloadExcel('{{ employee.employee_id }}')">Download Excel</button>
+                </td>
+                <!-- Add other fields as needed -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
+<script>
+
+
+    function downloadExcel(employeeId) {
+        // Here you can implement logic to download the data as an Excel file for a specific employee
+        // For example, you can create a Blob object containing the table data for the given employee and force a download
+        alert("Downloading Excel for Employee ID: " + employeeId);
+    }
+
+
+
+
+</script>
+</body>
+</html>

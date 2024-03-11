@@ -1,0 +1,19 @@
+{% block title %}
+
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Edit salary record </h1>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button type="submit"  value=""> Update</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
